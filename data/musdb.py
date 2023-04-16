@@ -23,10 +23,14 @@ def get_musdbhq(database_path):
         for track_folder in sorted(tracks):
             # Skip track if mixture is already written, assuming this track is done already
             example = dict()
-            for stem in ["mix", "bass", "drums", "other", "vocals"]:
-                filename = stem if stem != "mix" else "mixture"
-                audio_path = os.path.join(track_folder, filename + ".wav")
-                example[stem] = audio_path
+            # for stem in ["mix", "bass", "drums", "other", "vocals"]:
+            #     filename = stem if stem != "mix" else "mixture"
+            #     audio_path = os.path.join(track_folder, filename + ".wav")
+            #     example[stem] = audio_path
+
+            # only drums
+            drums_path = os.path.join(track_folder, "drums.wav")
+            example["drums"] = drums_path
 
             # Add other instruments to form accompaniment
             acc_path = os.path.join(track_folder, "accompaniment.wav")
